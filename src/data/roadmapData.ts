@@ -11,13 +11,17 @@ export const roadmapData = {
         description: "Commit to completing migration by Feb. 28",
       },
       {
-        title: "Display nationwide outputs from US congressional districts",
+        title: "Create US congressional district-level breakdown map in app v2",
       },
       {
         title: "Begin Cosilico migration as it ramps up",
       },
       {
         title: "Improve processes to ensure tech team work responds to new needs",
+      },
+      {
+        title: "Create cost monitoring platform",
+        description: "Aggregate all technical cost sources and create dashboard for viewing/monitoring; consider integration into Teamverse",
       },
     ],
   },
@@ -27,7 +31,7 @@ export const roadmapData = {
     subtitle: "Points for consideration",
     items: [
       {
-        title: "Determine future of app v2",
+        title: "Determine future of app v2 and sunset schedule for app v1",
       },
       {
         title: "Refine our mission",
@@ -47,15 +51,28 @@ export const roadmapData = {
     quarter: "Q2",
     items: [
       {
-        title: "Conduct market assessment and increase lead generation involvement",
-      },
-      {
         title: "Support more complex visualizations from the Policy Team",
       },
       {
-        title: "Create reusable components to increase pace of applet creation",
+        title: "Continue Cosilico migration as needed",
+      },
+      {
+        title: "Conduct market assessment and increase lead generation involvement",
+        description: "This includes:",
+        subItems: [
+          "Engaging more closely with existing and new policy stakeholders to understand technical product needs",
+          "Driving new engagement with tech community",
+          "Publishing more blog posts, articles, and newsletter blurbs about our technical processes and achievements",
+          "Attending open-source conferences",
+        ],
+      },
+      {
+        title: "Create components and technical structures to increase pace of applet/dashboard creation",
         description: "Working with the policy team, driven by their needs. Possible areas include:",
         subItems: [
+          "Improved orchestration/deployment structures",
+          "AI skills, agents, workflows",
+          ".py integration into dashboards",
           "Front-end components, graphs, charts, especially things Claude struggles with (Plotly/other chart library, OBBBA scrolly story-style scatter plot)",
           "Front-end Claude brand skills",
           "Back-end libraries that can be invoked instead of needing to reinvent/deploy new back end (Modal, .py can help enable this)",
@@ -72,9 +89,6 @@ export const roadmapData = {
           "At minimum, integrate applets/dashboards from policy team into app",
         ],
       },
-      {
-        title: "Continue Cosilico migration as needed",
-      },
     ],
   },
   q3: {
@@ -82,10 +96,12 @@ export const roadmapData = {
     quarter: "Q3+",
     items: [
       {
-        title: "New products to support applets",
+        title: "New products and continued improvements to applets/dashboards",
         description: "Possible options include:",
         subItems: [
+          "Improved data orchestration workflow",
           "AI interface building on Nikhil's work that can produce and launch applets for constrained visualization/charting requirements on a framework like Modal",
+          "Explicit connection between app v2 and dashboards that allows users to seamlessly use saved households in dashboards and vice-versa",
         ],
       },
       {
@@ -99,12 +115,7 @@ export const roadmapData = {
         ],
       },
       {
-        title: "Improved analytics and monitoring",
-        description: "Possible options include:",
-        subItems: [
-          "Front-end user analytics",
-          "Internal cost monitoring aggregating all cost sources",
-        ],
+        title: "App v2 and dashboard/applet user analytics, metrics, and tracing",
       },
     ],
   },
