@@ -54,7 +54,7 @@ export const roadmapData = {
       },
       {
         title: "Create reusable components to increase pace of applet creation",
-        description: "Working with the policy team, driven by their needs",
+        description: "Working with the policy team, driven by their needs. Possible areas include:",
         subItems: [
           "Front-end components, graphs, charts, especially things Claude struggles with (Plotly/other chart library, OBBBA scrolly story-style scatter plot)",
           "Front-end Claude brand skills",
@@ -64,6 +64,7 @@ export const roadmapData = {
       },
       {
         title: "Define app v2 direction based on role and market assessment",
+        description: "Possible directions include:",
         subItems: [
           "Subscription-based tool for policy analysis with free and paid tiers?",
           "Training tool for recent grads?",
@@ -82,12 +83,14 @@ export const roadmapData = {
     items: [
       {
         title: "New products to support applets",
+        description: "Possible options include:",
         subItems: [
           "AI interface building on Nikhil's work that can produce and launch applets for constrained visualization/charting requirements on a framework like Modal",
         ],
       },
       {
         title: "New products driven by market assessment",
+        description: "Possible options include:",
         subItems: [
           "Internal dashboard/visualization tools for public and/or NGO clients",
           "Local-level analytical tools powered by local-level datasets (e.g., NYC), GIS visualizations",
@@ -97,6 +100,7 @@ export const roadmapData = {
       },
       {
         title: "Improved analytics and monitoring",
+        description: "Possible options include:",
         subItems: [
           "Front-end user analytics",
           "Internal cost monitoring aggregating all cost sources",

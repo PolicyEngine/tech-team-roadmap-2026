@@ -56,6 +56,19 @@ export function Q3Slide() {
                 >
                   {item.title}
                 </p>
+                {item.description && (
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "0.875rem",
+                      color: "var(--pe-gray-500)",
+                      margin: "0.25rem 0 0 0",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {item.description}
+                  </p>
+                )}
                 {item.subItems && (
                   <div
                     style={{
