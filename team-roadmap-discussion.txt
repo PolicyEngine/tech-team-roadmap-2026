@@ -1,0 +1,1667 @@
+
+ * ▐▛███▜▌ *   Claude Code v2.0.67
+* ▝▜█████▛▘ *  Opus 4.5 · Claude Max
+ *  ▘▘ ▝▝  *   ~/Documents/PolicyEngine/policyengine-app-v2
+
+> /clear 
+  ⎿  (no content)
+
+> Let's switch gears. I want you to find out everything you can about the 
+`PolicyEngine/CRM` repo on GitHub. It's a private repo, but I should have 
+permission to access it. In particular, what options do I have for bulk 
+upload and categorization of tasks, ideally via either CLI or AI? 
+
+⏺ I'll explore the PolicyEngine/CRM repository to understand its structure and capabilities for bulk upload and task categorization.
+
+⏺ Bash(gh repo view PolicyEngine/CRM --json name,description,defaultBranchRef)
+  ⎿  {                            
+       "defaultBranchRef": {
+         "name": "main"
+     … +5 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents --jq '.[].name' 2>/dev/null | head
+       -50)
+  ⎿  .env.example                 
+     .gitignore
+     MAILCHIMP_SETUP.md
+     … +6 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/README.md --jq '.content' | base64
+       -d)
+  ⎿ # PolicyEngine CRM                                                     
+
+    A custom CRM system built for PolicyEngine to manage external communica
+    … +163 lines (ctrl+o to expand)
+
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages --jq '.[].name')
+  ⎿  backend                      
+     cli
+     frontend
+     … +2 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/docs --jq '.[].name')
+  ⎿  DEPLOYMENT.md                
+     GOOGLE_SEARCH_SETUP.md
+     LINKEDIN_INTEGRATION.md
+     … +2 lines (ctrl+o to expand)
+
+⏺ Excellent! There's both a CLI package and an MCP server. Let me explore these in detail:
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/cli --jq '.[].name')
+  ⎿  README.md                    
+     package-lock.json
+     package.json
+     … +2 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/mcp-server --jq
+      '.[].name')
+  ⎿  .env.example                 
+     QUICKSTART.md
+     README.md
+     … +3 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/docs/MCP_SERVER_SETUP.md --jq
+      '.content' | base64 -d)
+  ⎿ # MCP Server Setup Guide                                               
+
+    This CRM system uses the Model Context Protocol (MCP) for AI-powered fe
+    … +120 lines (ctrl+o to expand)
+
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/cli/README.md --jq
+      '.content' | base64 -d)
+  ⎿  # PolicyEngine CRM CLI                                
+
+     **Sync CRM data to local files for AI agent editing.**
+     … +255 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/cli/src --jq '.[].name')
+  ⎿  auth.ts
+     cli.ts
+     sync.ts
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/mcp-server/README.md --jq
+       '.content' | base64 -d)
+  ⎿ # CRM MCP Server                                                       
+
+    Secure MCP (Model Context Protocol) server that allows Claude Code to i
+    … +255 lines (ctrl+o to expand)
+
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/cli/src/sync.ts --jq
+      '.content' | base64 -d)
+  ⎿  /**                             
+      * Sync module for CRM CLI.
+      *
+     … +1148 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/cli/src/cli.ts --jq
+      '.content' | base64 -d)
+  ⎿  #!/usr/bin/env node            
+
+     /**
+     … +217 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/mcp-server/src --jq
+      '.[].name')
+  ⎿  apiClient.ts                 
+     auditLog.ts
+     auth.ts
+     … +5 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/mcp-server/QUICKSTART.md
+      --jq '.content' | base64 -d 2>/dev/null || echo "File not found")
+  ⎿  # MCP Server Quick Start Guide                       
+
+     Get your CRM accessible via Claude Code in 5 minutes!
+     … +154 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/mcp-server/src/tools.ts
+      --jq '.content' | base64 -d)
+  ⎿  /**                               
+      * Tool definitions for MCP server
+      *
+     … +200 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/backend --jq '.[].name')
+  ⎿  .dockerignore                
+     .env.example
+     Dockerfile
+     … +5 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/docs/QUICKSTART.md --jq '.content'
+       | base64 -d 2>/dev/null || echo "File not found")
+  ⎿  # Quick Start Guide                                  
+
+     Get the PolicyEngine CRM up and running in 5 minutes.
+     … +225 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/backend/src --jq
+      '.[].name')
+  ⎿  app.ts                       
+     config
+     middleware
+     … +6 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/backend/src/modules --jq
+      '.[].name')
+  ⎿  activities                    
+     attachments
+     campaigns
+     … +12 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/backend/src/services --jq
+       '.[].name' 2>/dev/null || echo "No services")
+  ⎿  contact-discovery.service.ts  
+     contact-enrichment.service.ts
+     contact-filtering.service.ts
+     … +10 lines (ctrl+o to expand)
+
+⏺ Bash(gh api
+      repos/PolicyEngine/CRM/contents/packages/backend/src/modules/github --jq
+      '.[].name')
+  ⎿  github-oauth.controller.ts   
+     github.controller.ts
+     github.routes.ts
+     … +2 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/backend/src/modules/tasks
+       --jq '.[].name')
+  ⎿  index.ts                     
+     tasks.controller.ts
+     tasks.repository.ts
+     … +4 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/backend/src/modules/githu
+      b/github.service.ts --jq '.content' | base64 -d)
+  ⎿ import axios from 'axios'                                              
+    import { GitHubRepo, GitHubIssue, GitHubCreateIssueInput } from './gith
+    ub.types'
+    … +206 lines (ctrl+o to expand)
+
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/backend/src/modules/tasks
+      /tasks.service.ts --jq '.content' | base64 -d)
+  ⎿  import { tasksRepository } from './tasks.repository' 
+     import { CreateTaskInput, Task } from './tasks.types'
+     import { NotFoundError } from '../../utils/errors'
+     … +188 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/backend/src/modules/tasks
+      /tasks.controller.ts --jq '.content' | base64 -d)
+  ⎿  import { Request, Response } from 'express'                        
+     import { tasksService } from './tasks.service'
+     import { createTaskSchema, updateTaskSchema } from './tasks.schema'
+     … +63 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/backend/src/modules/githu
+      b/github.controller.ts --jq '.content' | base64 -d)
+  ⎿  import { Request, Response } from 'express'                
+     import { githubService } from './github.service'
+     import { tasksRepository } from '../tasks/tasks.repository'
+     … +312 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/backend/src/services/cont
+      act-enrichment.service.ts --jq '.content' | base64 -d | head -100)
+  ⎿  import OpenAI from 'openai';                                      
+     import { logger } from '../utils/logger';
+     import { performGoogleSearch } from './contact-discovery.service';
+     … +100 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/backend/src/services/embe
+      ddings.service.ts --jq '.content' | base64 -d | head -80)
+  ⎿  import OpenAI from 'openai'             
+     import { logger } from '../utils/logger'
+     … +77 lines (ctrl+o to expand)
+
+⏺ Now I have a comprehensive understanding of the CRM. Here's a summary of your options for bulk upload and categorization of tasks:
+
+  ---
+  Options for Bulk Operations
+
+  1. CLI Sync (Recommended for Bulk Operations)
+
+  The crm CLI allows you to sync CRM data to local YAML files, edit with AI, and push back.
+
+  # Install
+  cd packages/cli && npm install && npm run build && npm link
+
+  # Login
+  crm auth login
+
+  # Pull data to local YAML files
+  crm sync pull
+
+  # Edit files with any AI agent (Claude Code, Cursor, etc.)
+  claude "categorize all tasks by priority and assign to appropriate team members"
+
+  # Push changes back
+  crm sync push
+
+  Local file structure for tasks:
+  crm-data/tasks/
+  ├── update-homepage-q7r8s9t0.yaml
+  └── review-proposal-u1v2w3x4.yaml
+
+  Task YAML format:
+  id: a1b2c3d4...
+  title: Update homepage
+  description: ...
+  status: todo | in_progress | completed | cancelled
+  priority: low | medium | high | urgent
+  project_id: <optional>
+  assignee_id: <optional>
+  due_date: 2025-01-20
+  github_repo: <optional>
+  github_number: <optional>
+
+  2. MCP Server (AI Integration with Claude Code)
+
+  Connect Claude Code directly to the CRM via MCP for real-time operations:
+
+  // ~/.config/claude/claude_desktop_config.json
+  {
+    "mcpServers": {
+      "crm": {
+        "command": "node",
+        "args": ["/path/to/CRM/packages/mcp-server/dist/index.js"],
+        "env": {
+          "CRM_BACKEND_URL": "http://localhost:3002",
+          "MCP_INTERNAL_TOKEN": "<your-token>"
+        }
+      }
+    }
+  }
+
+  Available MCP tools:
+  | Tool                  | Description             |
+  |-----------------------|-------------------------|
+  | list_tasks            | List/filter tasks       |
+  | create_task           | Create individual tasks |
+  | list_contacts         | List contacts           |
+  | find_similar_contacts | AI semantic search      |
+  | list_projects         | List projects           |
+
+  3. GitHub Issue Import (Bulk via API)
+
+  Import GitHub issues/PRs as tasks through the backend API:
+
+  POST /api/github/import
+  {
+    "repo": "PolicyEngine/policyengine-app",
+    "state": "open",
+    "includeIssues": true,
+    "includePRs": false,
+    "projectId": "<optional project to assign to>",
+    "selectedItems": [123, 456, 789]  // optional specific issues
+  }
+
+  Features:
+  - Auto-maps GitHub assignees to CRM users (by github_username)
+  - Detects and skips duplicates
+  - Syncs task completion back to GitHub (closes issues when tasks complete)
+
+  4. Direct Database via Supabase
+
+  For very large bulk imports:
+  INSERT INTO tasks (id, title, status, priority, project_id, ...)
+  VALUES
+    (gen_random_uuid(), 'Task 1', 'todo', 'high', ...),
+    (gen_random_uuid(), 'Task 2', 'todo', 'medium', ...);
+
+  ---
+  AI-Powered Features
+
+  | Feature                 | Description                                               |
+  |-------------------------|-----------------------------------------------------------|
+  | Semantic Contact Search | find_similar_contacts uses OpenAI embeddings              |
+  | Contact Enrichment      | Auto-lookup org/title from email domains via Google + GPT |
+  | Email Generation        | AI-generated campaign content                             |
+  | CLI + AI Agents         | Edit YAML files with Claude Code, Cursor, Gemini CLI      |
+
+  ---
+  Recommended Workflow for Bulk Task Categorization
+
+  1. Pull data locally:
+  crm sync pull
+  2. Use Claude Code to categorize:
+  claude "Review all tasks in crm-data/tasks/ and:
+  - Set priority based on due dates and importance
+  - Assign to team members based on expertise
+  - Link to appropriate projects
+  - Add missing descriptions"
+  3. Review changes:
+  crm sync status
+  4. Push back:
+  crm sync push
+
+  ---
+  Quick Comparison
+
+  | Method        | Best For                                 | AI Support            |
+  |---------------|------------------------------------------|-----------------------|
+  | CLI sync      | Bulk edits, batch categorization         | ✅ Any AI agent       |
+  | MCP Server    | Real-time queries, individual operations | ✅ Claude Code direct |
+  | GitHub import | Syncing from repos                       | ⚪ Assignment mapping |
+  | Direct DB     | Very large one-time imports              | ❌ Manual only        |
+
+> Can I connect other applications on top of the same database, even in just
+ a read-only capacity? 
+
+⏺ Yes, absolutely. The CRM uses Supabase (PostgreSQL) as its database, which makes it straightforward to connect other applications.
+
+  Connection Options
+
+  1. Supabase Client Libraries (Recommended)
+
+  Supabase provides client libraries for many languages with built-in auth and row-level security:
+
+  // JavaScript/TypeScript
+  import { createClient } from '@supabase/supabase-js'
+
+  const supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_ANON_KEY  // Read-only with RLS
+  )
+
+  const { data: tasks } = await supabase
+    .from('tasks')
+    .select('*')
+    .eq('status', 'todo')
+
+  Available for: JavaScript, Python, Dart, Swift, Kotlin, C#
+
+  2. Direct PostgreSQL Connection
+
+  Connect any PostgreSQL-compatible tool directly:
+
+  # Connection string format
+  postgresql://postgres:[PASSWORD]@[PROJECT_REF].supabase.co:5432/postgres
+
+  Works with:
+  - BI Tools: Metabase, Tableau, Looker, Power BI
+  - Data Tools: DBeaver, pgAdmin, DataGrip
+  - Python: psycopg2, SQLAlchemy, pandas
+  - ETL: Airbyte, Fivetran, dbt
+
+  3. Supabase REST API
+
+  Query via HTTP without any SDK:
+
+  curl 'https://[PROJECT_REF].supabase.co/rest/v1/tasks?status=eq.todo' \
+    -H "apikey: [ANON_KEY]" \
+    -H "Authorization: Bearer [ANON_KEY]"
+
+  4. Read-Only Database User (Most Secure)
+
+  Create a dedicated read-only user for external apps:
+
+  -- Create read-only role
+  CREATE ROLE readonly_user WITH LOGIN PASSWORD 'secure_password';
+
+  -- Grant read access to specific tables
+  GRANT USAGE ON SCHEMA public TO readonly_user;
+  GRANT SELECT ON tasks, contacts, projects, users TO readonly_user;
+
+  -- Or grant to all tables
+  GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly_user;
+
+  ---
+  Key Tables Available
+
+  | Table          | Description                                 |
+  |----------------|---------------------------------------------|
+  | contacts       | External contacts (donors, partners, leads) |
+  | projects       | Projects, events, grants                    |
+  | tasks          | Tasks with PERT estimation                  |
+  | users          | Team members                                |
+  | activities     | Interaction log (meetings, calls, notes)    |
+  | contact_groups | Contact segmentation                        |
+  | campaigns      | Email campaigns                             |
+  | change_history | Audit log of all changes                    |
+
+  ---
+  Example Use Cases
+
+  1. Dashboard/Reporting (Metabase, Grafana):
+  SELECT
+    status,
+    COUNT(*) as count,
+    AVG(EXTRACT(epoch FROM (due_date - created_at))/86400) as avg_days_to_due
+  FROM tasks
+  GROUP BY status;
+
+  2. Python Data Analysis:
+  import pandas as pd
+  from supabase import create_client
+
+  supabase = create_client(url, key)
+  response = supabase.table('tasks').select('*').execute()
+  df = pd.DataFrame(response.data)
+
+  3. Zapier/Make Integration:
+  Use Supabase's webhook triggers or poll the REST API.
+
+  4. Custom Internal Tools:
+  Build read-only dashboards using the anon key with RLS policies.
+
+  ---
+  Security Considerations
+
+  | Method                   | Security Level | Notes                                |
+  |--------------------------|----------------|--------------------------------------|
+  | Anon key + RLS           | High           | Respects row-level security policies |
+  | Service key              | Admin          | Full access, use carefully           |
+  | Read-only DB user        | High           | Limited to SELECT only               |
+  | Direct connection string | Varies         | Depends on user permissions          |
+
+  For read-only external apps, I'd recommend either:
+  1. Anon key if RLS policies are configured
+  2. Dedicated read-only PostgreSQL user for maximum isolation
+
+  Would you like me to look at the specific RLS policies or database schema in the repo?
+
+> What is the anon key? 
+
+⏺ The anon key (anonymous key) is a Supabase concept — it's a public API key that's safe to expose in client-side code.
+
+  How Supabase Keys Work
+
+  Supabase provides two keys per project:
+
+  | Key              | Purpose                    | Security                                            |
+  |------------------|----------------------------|-----------------------------------------------------|
+  | anon key         | Public, client-side access | Safe to expose; limited by Row Level Security (RLS) |
+  | service_role key | Server-side admin access   | Never expose; bypasses all RLS policies             |
+
+  The Anon Key
+
+  # Example anon key format
+  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6...
+
+  - It's a JWT token that identifies your Supabase project
+  - It grants access only to what Row Level Security (RLS) policies allow
+  - It's meant to be used in browsers, mobile apps, and public clients
+  - Without RLS policies, it grants no access to tables by default
+
+  Example RLS Policy
+
+  -- Allow anyone with anon key to read public tasks
+  CREATE POLICY "Public tasks are viewable"
+  ON tasks FOR SELECT
+  USING (is_public = true);
+
+  -- Allow authenticated users to see their own tasks
+  CREATE POLICY "Users can view own tasks"
+  ON tasks FOR SELECT
+  USING (auth.uid() = assignee_id);
+
+  Where to Find It
+
+  For the CRM, the anon key would be in:
+  - packages/backend/.env → SUPABASE_ANON_KEY
+  - packages/frontend/.env → VITE_SUPABASE_ANON_KEY
+  - Supabase Dashboard → Settings → API → anon public
+
+  For Your Read-Only Use Case
+
+  If you want to connect external apps:
+
+  1. With anon key: You get whatever RLS policies allow (check if they're configured)
+  2. With service_role key: Full access but never put this in client apps
+  3. With read-only DB user: Safest for external tools — explicit permissions, no key exposure
+
+  Would you like me to check what RLS policies are configured in the CRM's migrations?
+
+> Let's switch paths again a bit here. Let's say you have a technical 
+development team that's quite small, works across products, and has projects
+ that sometimes touch quite a few products. How would new 
+projects/deliverables typically be managed in this environment? And what 
+about minor bugs? I'm thinking about something akin to a backlog, but have 
+never worked with one, and it's easy to imagine a situation where we have 
+500 bugs and it's unclear what all fits together. I also don't want minor 
+single-fix bugs to exist at the same level as, say, a project 
+
+⏺ This is a common challenge for small teams. Here's a practical approach that avoids both chaos and over-engineering:
+
+  Core Principle: Two Levels of Work
+
+  Projects/Deliverables (planned, substantial)
+  ↓ break down into
+  Tasks (atomic, completable in hours/days)
+
+  Bugs live separately and get triaged, not automatically promoted to the same status as planned work.
+
+  ---
+  Recommended Structure
+
+  1. Projects = Planned Outcomes
+
+  A project is something you'd announce when it ships. Examples:
+  - "Add UK support to the API"
+  - "Redesign the household input flow"
+  - "Q1 grant report for Foundation X"
+
+  Projects have:
+  - A clear deliverable/outcome
+  - A rough scope (weeks, not hours)
+  - An owner
+  - Tasks that break it down
+
+  2. Tasks = Work Units
+
+  Tasks are atomic pieces of work:
+  - "Add UK income tax parameters"
+  - "Write household input validation"
+  - "Draft executive summary for grant report"
+
+  Tasks belong to a project (or are standalone for small improvements).
+
+  3. Bugs = Separate Triage Queue
+
+  Bugs should not automatically become tasks. Instead:
+
+  Bug reported
+      ↓
+  Triage (weekly or as-needed)
+      ↓
+  ┌─────────────────────────────────────────┐
+  │ Fix now     → Create task, assign       │
+  │ Fix later   → Tag with product, park    │
+  │ Won't fix   → Close with reason         │
+  │ Actually a feature → Convert to project │
+  └─────────────────────────────────────────┘
+
+  ---
+  The "500 Bugs" Problem
+
+  The anxiety comes from treating all bugs as equal obligations. They're not. Use a simple triage:
+
+  | Category       | Criteria                                | Action                      |
+  |----------------|-----------------------------------------|-----------------------------|
+  | P0 - Critical  | Blocks users, data loss, security       | Fix immediately             |
+  | P1 - Important | Significant UX issue, workaround exists | Fix this week               |
+  | P2 - Normal    | Annoying but minor                      | Fix when touching that area |
+  | P3 - Low       | Cosmetic, edge case                     | Maybe never fix             |
+
+  Key insight: It's okay to have 200 P3 bugs that never get fixed. They're documented, searchable, and you'll fix them opportunistically when you're already in that code.
+
+  ---
+  Practical Workflow for Small Teams
+
+  Weekly rhythm:
+
+  Monday (30 min)
+  ├── Review: What shipped last week?
+  ├── Triage: New bugs → P0/P1/P2/P3
+  ├── Plan: What are we focusing on this week?
+  └── Assign: Who owns what?
+
+  Daily (async or 10 min standup)
+  └── Blockers only
+
+  Friday (optional)
+  └── Quick demo of anything shippable
+
+  How cross-product projects work:
+
+  Project: "Unified API v2"
+  ├── Product: policyengine-api
+  │   └── Tasks: endpoint changes, tests
+  ├── Product: policyengine-app
+  │   └── Tasks: update API calls, handle new responses
+  └── Product: docs
+      └── Tasks: update API reference
+
+  The project is the "glue" — tasks are tagged to their product/repo but linked to one project.
+
+  ---
+  What This Looks Like in Practice
+
+  Your backlog becomes three views:
+
+  1. Active Projects (5-10 max)
+    - What we're actually working on
+    - Each has an owner and rough timeline
+  2. Bug Triage Queue
+    - New/unprocessed bugs
+    - Reviewed weekly, moved to tasks or parked
+  3. Parked Bugs (the "500 bugs")
+    - Searchable archive
+    - Tagged by product/area
+    - Pulled opportunistically: "I'm refactoring the chart component, let me check for related bugs"
+
+  ---
+  Anti-Patterns to Avoid
+
+  | Bad                 | Better                                                         |
+  |---------------------|----------------------------------------------------------------|
+  | Every bug is a task | Bugs are triaged; only P0/P1 become immediate tasks            |
+  | One flat backlog    | Separate projects, active tasks, and parked bugs               |
+  | "We'll get to it"   | Explicit "won't fix" or "P3 - opportunistic"                   |
+  | No ownership        | Every project has one owner (not "the team")                   |
+  | Planning everything | Only plan 2-3 weeks ahead; backlog is a menu, not a commitment |
+
+  ---
+  For Your CRM Setup
+
+  If you use the PolicyEngine CRM:
+
+  Projects (type: deliverable)
+  ├── status: planning → active → completed
+  ├── tasks linked via project_id
+  └── cross-product work tracked in description/notes
+
+  Tasks
+  ├── Linked to project OR standalone
+  ├── priority: low/medium/high/urgent
+  ├── GitHub issue sync for dev work
+
+  Bugs (could be a contact_group or tag system)
+  ├── P0-P3 priority
+  ├── Product tag
+  ├── "Parked" status for the 500-bug archive
+
+  Would you like me to look at how the CRM's current schema maps to this, or explore a specific part of this workflow?
+
+> Okay, I like this so far. I will say that the CRM currently contains a 
+concept of tasks, which nests into projects, but doesn't have a separate 
+defined bugs concept. Please analyze the CRM repo and pay attention to the 
+front-end views, as well, to determine how the CRM currently handles this. 
+I'd love any recommendations you migth have on how to do this, including 
+possibly placing bugs in their own project of some sort 
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/frontend/src --jq
+      '.[].name')
+  ⎿  App.tsx                       
+     components
+     constants
+     … +13 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/frontend/src/pages --jq
+      '.[].name')
+  ⎿  AuthPage.tsx                  
+     CalendarPage.tsx
+     CampaignsPage.tsx
+     … +14 lines (ctrl+o to expand)
+
+⏺ Bash(gh api
+      repos/PolicyEngine/CRM/contents/packages/frontend/src/pages/TasksPage.tsx
+      --jq '.content' | base64 -d)
+  ⎿ import { useState, useMemo, useEffect, useCallback, useRef } from 'reac
+    t'
+    import { useParams, useNavigate } from 'react-router-dom'
+    … +853 lines (ctrl+o to expand)
+
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/frontend/src/pages/Projec
+      tsPage.tsx --jq '.content' | base64 -d)
+  ⎿ import { useState, useMemo, useEffect, useCallback, useRef } from 'reac
+    t'
+    import { Link } from 'react-router-dom'
+    … +525 lines (ctrl+o to expand)
+
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/backend/src/modules/tasks
+      /tasks.types.ts --jq '.content' | base64 -d)
+  ⎿ export type TaskStatus = 'backlog' | 'todo' | 'in_progress' | 'blocked'
+     | 'completed' | 'cancelled'
+    … +95 lines (ctrl+o to expand)
+
+
+⏺ Bash(gh api
+      repos/PolicyEngine/CRM/contents/packages/backend/src/modules/projects --jq
+       '.[].name')
+  ⎿  index.ts                     
+     projects.controller.ts
+     projects.repository.ts
+     … +4 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/backend/src/modules/proje
+      cts/projects.types.ts --jq '.content' | base64 -d)
+  ⎿ export type ProjectType = 'deliverable' | 'report' | 'grant' | 'event' 
+
+    export type ProjectStatus = 'planning' | 'active' | 'on_hold' | 'comple
+    … +38 lines (ctrl+o to expand)
+
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/frontend/src/components/f
+      eatures/tasks --jq '.[].name')
+  ⎿  CompletionDateModal          
+     DependenciesSection
+     GitHubImportModal
+     … +7 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/frontend/src/pages/Sprint
+      sPage.tsx --jq '.content' | base64 -d | head -150)
+  ⎿ import { useState, useMemo, useEffect, useCallback, useRef } from 'reac
+    t'
+    import { useNavigate } from 'react-router-dom'
+    … +162 lines (ctrl+o to expand)
+
+
+⏺ Bash(gh api
+      repos/PolicyEngine/CRM/contents/packages/backend/src/modules/sprints --jq
+      '.[].name' 2>/dev/null || echo "No sprints module")
+  ⎿  sprints.controller.ts        
+     sprints.repository.ts
+     sprints.router.ts
+     … +3 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/frontend/src/components/f
+      eatures/tasks/TaskForm --jq '.[].name')
+  ⎿  TaskForm.tsx
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/supabase/migrations --jq
+      '.[].name' | head -20)
+  ⎿  20250110000000_initial_schema.sql             
+     20250111000000_update_project_types.sql
+     20250111000001_remove_events_grants_tables.sql
+     … +17 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/supabase/migrations/20250110000000
+      _initial_schema.sql --jq '.content' | base64 -d | grep -A 50 "CREATE
+      TABLE.*tasks")
+  ⎿  CREATE TABLE tasks (          
+       id text PRIMARY KEY,
+       title text NOT NULL,
+     … +51 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/supabase/migrations/20250110000000
+      _initial_schema.sql --jq '.content' | base64 -d | grep -A 30 "CREATE
+      TABLE.*projects")
+  ⎿  CREATE TABLE projects (       
+       id text PRIMARY KEY,
+       name text NOT NULL,
+     … +28 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/supabase/migrations/20250110000000
+      _initial_schema.sql --jq '.content' | base64 -d | grep -E "(CREATE
+      TYPE|task_type|task_…)
+  ⎿ CREATE TYPE contact_type AS ENUM ('lead', 'donor', 'partner', 'employee
+    ', 'other');
+    CREATE TYPE contact_status AS ENUM ('prospect', 'billing', 'inactive',
+    … +10 lines (ctrl+o to expand)
+
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/packages/frontend/src/components/f
+      eatures/tasks/TaskForm/TaskForm.tsx --jq '.content' | base64 -d | head
+      -200)
+  ⎿  import { useEffect, useState } from 'react'          
+     import { useForm } from 'react-hook-form'
+     import { zodResolver } from '@hookform/resolvers/zod'
+     … +228 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/supabase/migrations --jq
+      '.[].name' | xargs -I {} sh -c 'echo "=== {} ===" && gh api
+      repos/PolicyEngine/CRM/contents/supa…)
+  ⎿  === 20250110000000_initial_schema.sql ===      
+     === 20250111000000_update_project_types.sql ===
+
+⏺ Bash(gh api
+      "repos/PolicyEngine/CRM/search/code?q=task_type+in:file+path:supabase"
+      2>/dev/null || gh api repos/PolicyEngine/CRM/contents/supabase/migrations
+      --jq '.[…)
+  ⎿  Error: Exit code 1
+     (eval):1: parse error near `)'
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/supabase/migrations --jq
+      '.[].name' | tail -20)
+  ⎿  20250126000000_create_campaigns_and_mailchimp_tables.sql
+     20250126000001_create_contact_tags_and_groups.sql
+     20250127000000_remove_contact_tags.sql
+     … +17 lines (ctrl+o to expand)
+
+⏺ Bash(gh api repos/PolicyEngine/CRM/contents/supabase/migrations/20251211000000
+      _add_task_type_and_follow_up.sql --jq '.content' | base64 -d)
+  ⎿  -- Add task_type to tasks table for follow-up tracking
+     -- Add follow_up_default_days to contacts table
+     … +16 lines (ctrl+o to expand)
+
+⏺ Now I have a complete picture. Here's my analysis:
+
+  ---
+  Current CRM State
+
+  Tasks
+
+  | Field          | Values                                                    |
+  |----------------|-----------------------------------------------------------|
+  | status         | backlog, todo, in_progress, blocked, completed, cancelled |
+  | priority       | low, medium, high, urgent                                 |
+  | scope          | core, optional                                            |
+  | task_type      | general, follow_up                                        |
+  | project_id     | Optional link to project                                  |
+  | parent_task_id | Subtask hierarchy                                         |
+  | sprint_id      | Sprint assignment                                         |
+  | github_*       | GitHub issue sync                                         |
+
+  Projects
+
+  | Field  | Values                                          |
+  |--------|-------------------------------------------------|
+  | type   | deliverable, report, grant, event               |
+  | status | planning, active, on_hold, completed, cancelled |
+
+  Key Observations
+
+  1. No explicit "bug" concept — bugs would currently be regular tasks
+  2. Tasks can be standalone — project_id is optional
+  3. task_type exists — but only has general and follow_up
+  4. GitHub sync exists — can import issues, but they become regular tasks
+  5. Sprints exist — for time-boxing work
+
+  ---
+  Recommendations
+
+  Option A: "Bug Triage" Project (Works Today, No Code Changes)
+
+  Create a special project that acts as your bug parking lot:
+
+  Project: "Bug Triage"
+  Type: deliverable
+  Status: active (always)
+  Description: "Ongoing bug triage and maintenance backlog"
+
+  Workflow:
+  1. New bugs → Create task in "Bug Triage" project
+  2. Use priority for P0/P1/P2/P3 mapping:
+    - urgent = P0 (fix now)
+    - high = P1 (fix this week)
+    - medium = P2 (fix when in area)
+    - low = P3 (maybe never)
+  3. When you decide to fix a bug, either:
+    - Leave it in Bug Triage (for standalone fixes)
+    - Move it to a real project (if it's part of a larger effort)
+
+  Pros: Works immediately, no code changes
+  Cons: Bugs show up as project tasks, not truly separate
+
+  ---
+  Option B: Add "maintenance" Project Type (Small Schema Change)
+
+  Add a new project type specifically for bug tracking:
+
+  -- Migration
+  ALTER TYPE project_type ADD VALUE 'maintenance';
+
+  Then create product-specific bug projects:
+  - "policyengine-app Bugs"
+  - "policyengine-api Bugs"
+  - "policyengine-core Bugs"
+
+  Frontend changes: Add filter to hide "maintenance" projects from main project view, or show them in a separate "Bugs" section.
+
+  Pros: Clear separation, bugs grouped by product
+  Cons: Requires migration + minor frontend tweaks
+
+  ---
+  Option C: Extend task_type to Include Bugs (Best Long-Term)
+
+  Add bug as a task type with optional severity:
+
+  -- Add bug as task_type
+  -- task_type is already text, so no enum change needed
+  -- Just update the frontend validation
+
+  -- Optional: Add severity field for bug-specific triage
+  ALTER TABLE tasks ADD COLUMN bug_severity text;
+  COMMENT ON COLUMN tasks.bug_severity IS 'For bugs only: P0 (critical), P1 (important), P2 (normal), P3 (low)';
+
+  Frontend changes:
+  1. Add "Bug" option to task creation form
+  2. Show bug_severity field when task_type = 'bug'
+  3. Add "Bugs" view/filter that shows only bug-type tasks
+  4. Group by product (using GitHub repo or a product tag)
+
+  Pros: Bugs are first-class citizens, filterable everywhere
+  Cons: More code changes, needs UI work
+
+  ---
+  My Recommendation
+
+  Start with Option A (Bug Triage Project) — it works today:
+
+  Projects View:
+  ├── Website Redesign (deliverable) - Active
+  ├── Q1 Grant Report (report) - Active
+  ├── Annual Conference (event) - Planning
+  └── Bug Triage (deliverable) - Active  ← Your bug parking lot
+
+  Tasks in Bug Triage:
+  ├── [urgent] API returns 500 on empty input
+  ├── [high] Chart tooltip cuts off on mobile
+  ├── [medium] Typo on about page
+  ├── [low] Favicon slightly blurry at 32px
+  └── ... (hundreds of low-priority items)
+
+  Triage workflow:
+  1. Import GitHub issues to Bug Triage project
+  2. Weekly: Review new bugs, set priority
+  3. When working on a feature: Check Bug Triage for related bugs, pull them into your sprint
+  4. P3 bugs stay parked forever (and that's okay)
+
+  Later, evolve to Option C if you want:
+  - A dedicated "Bugs" page in the CRM
+  - Bug-specific fields (severity, affected version, reproduction steps)
+  - Bug metrics/reports
+
+  ---
+  Quick Setup (Option A)
+
+  Using the CLI:
+
+  # Pull current data
+  crm sync pull
+
+  # Create bug triage project manually via UI, or add YAML:
+  cat > crm-data/projects/bug-triage-$(uuidgen | cut -c1-8)/project.yaml << 'EOF'
+  id: bug-triage-project
+  name: Bug Triage
+  description: |
+    Ongoing bug triage and maintenance backlog.
+
+    Priority mapping:
+    - urgent = P0 (fix immediately)
+    - high = P1 (fix this week)
+    - medium = P2 (fix when in area)
+    - low = P3 (opportunistic/maybe never)
+  type: deliverable
+  status: active
+  EOF
+
+  # Push
+  crm sync push
+
+  Then import GitHub issues directly to this project via the UI or API.
+
+  Would you like me to look at what it would take to implement Option C (bugs as a task type) in the CRM codebase?
+
+> I'd first like you to also think through idea exploration. We want to 
+always be generating new possible task or project ideas, but that doesn't 
+necessarily mean we want to create a new project for every single one of 
+these. How could we handle that? An ideas project? Something else? How do 
+other teams handle this? 
+
+⏺ Great question. This is the "fuzzy front end" problem — you want low-friction idea capture without polluting your committed work queue.
+
+  How Teams Handle This
+
+  1. Icebox / Ideas Backlog
+
+  A holding pen for ideas that aren't ready for commitment:
+
+  Ideas (unshaped, uncommitted)
+      ↓ shaping/validation
+  Backlog (shaped, waiting for capacity)
+      ↓ sprint planning
+  Active Work
+
+  Key principle: Ideas are not tasks. They're raw material that might become tasks, might combine with other ideas, or might die.
+
+  ---
+  2. Basecamp's "Pitches" Model
+
+  From Shape Up methodology:
+
+  | Stage         | Description                                                     |
+  |---------------|-----------------------------------------------------------------|
+  | Raw ideas     | Quick notes, no format required                                 |
+  | Pitches       | Shaped proposals with problem, solution, appetite (time budget) |
+  | Betting table | Leadership picks what to build next cycle                       |
+  | Projects      | Only created after betting                                      |
+
+  Key insight: Most ideas never become pitches. Most pitches never get bet on. That's fine.
+
+  ---
+  3. RFC/Proposal Documents
+
+  For bigger ideas that need discussion:
+
+  docs/proposals/
+  ├── 001-uk-support.md (accepted → became project)
+  ├── 002-mobile-app.md (deferred)
+  ├── 003-api-v2.md (in discussion)
+  └── 004-dark-mode.md (rejected)
+
+  Each RFC has: problem statement, proposed solution, alternatives considered, open questions.
+
+  Works well for: Technical decisions, architectural changes, features with trade-offs.
+
+  ---
+  4. Two-List System (Warren Buffett style)
+
+  Keep two lists:
+  1. Top 5 — Actually working on these
+  2. Everything else — Explicitly not working on these
+
+  The "everything else" list exists so you don't forget ideas, but it's intentionally not a commitment.
+
+  ---
+  5. Opportunity Solution Trees
+
+  Product discovery approach:
+
+  Outcome: Increase user retention
+  ├── Opportunity: Users confused by results
+  │   ├── Idea: Add explanation tooltips
+  │   ├── Idea: Redesign results page
+  │   └── Idea: Add guided tour
+  ├── Opportunity: Users can't save work
+  │   ├── Idea: Add save button
+  │   └── Idea: Auto-save
+
+  Ideas are organized by what problem they solve, not in a flat list.
+
+  ---
+  The Core Tension
+
+  | Approach                     | Capture Friction | Organization | Risk                                      |
+  |------------------------------|------------------|--------------|-------------------------------------------|
+  | Flat ideas list              | Low              | Poor         | Becomes graveyard of 500 unreviewed ideas |
+  | Structured proposals         | High             | Good         | People stop submitting ideas              |
+  | Ideas as tasks               | Low              | Mixed        | Clutters real work                        |
+  | Separate tool (Notion, etc.) | Low              | Varies       | Ideas disconnected from execution         |
+
+  ---
+  Practical Recommendation for Small Teams
+
+  The "Ideas" Project Approach
+
+  Create an "Ideas" project, but treat it differently:
+
+  Project: Ideas & Exploration
+  Type: deliverable
+  Status: active (always)
+  Description: |
+    Raw ideas and explorations. NOT a commitment to build.
+
+    Lifecycle:
+    1. Capture: Add anything here, low friction
+    2. Review: Monthly, group related ideas
+    3. Shape: Promising ideas get a brief write-up
+    4. Promote: Shaped ideas become real projects (or die)
+
+    It's okay for ideas to sit here forever.
+
+  Tasks in Ideas project:
+  - Are not assigned (no owner until promoted)
+  - Have no due dates
+  - Use priority loosely: high = "exciting", low = "maybe someday"
+  - Can have rich descriptions for context
+
+  Monthly ideas review (30 min):
+  1. Scan new ideas
+  2. Group related ones
+  3. Kill obvious non-starters
+  4. Promote 0-2 to "needs shaping"
+  5. Shape 0-1 into a real project proposal
+
+  ---
+  Alternative: Use Task Status More Intentionally
+
+  The CRM already has backlog status. You could use it as an idea stage:
+
+  Task Statuses (reframed):
+  ├── backlog → "Ideas / Someday Maybe"
+  ├── todo → "Committed, not started"
+  ├── in_progress → "Active work"
+  ├── blocked → "Waiting on something"
+  ├── completed → "Done"
+  └── cancelled → "Not doing"
+
+  Workflow:
+  - New ideas → Create task with status backlog, no project
+  - Weekly triage → Review backlog, promote to todo or assign to project
+  - Standalone tasks with backlog status = ideas parking lot
+
+  Pros: No new structure needed
+  Cons: Backlog could get cluttered with both "ideas" and "committed but not started"
+
+  ---
+  Alternative: Separate Ideas from Tasks Entirely
+
+  Keep ideas in a lightweight format outside the task system:
+
+  crm-data/
+  ├── tasks/
+  ├── projects/
+  └── ideas/              ← New directory
+      ├── uk-support.md
+      ├── mobile-app.md
+      └── api-improvements.md
+
+  Each idea is a markdown file:
+
+  # UK Support
+
+  **Status:** Exploring
+  **Source:** User feedback, Nov 2024
+  **Champion:** (none yet)
+
+  ## Problem
+  Users in the UK can't use PolicyEngine because we don't have UK tax/benefit rules.
+
+  ## Possible approaches
+  1. Partner with UK policy org
+  2. Build it ourselves (6+ months)
+  3. Open-source the rules format, let community contribute
+
+  ## Open questions
+  - Is there demand? (check analytics)
+  - Who would maintain UK rules long-term?
+
+  ## Related
+  - See also: EU support idea
+  - Depends on: API v2 for multi-country support
+
+  Pros:
+  - Ideas can be as detailed or rough as needed
+  - Easy to write, search, version control
+  - Doesn't clutter task system
+  - AI agents can read/organize these
+
+  Cons:
+  - Separate from tasks (manual promotion)
+  - No built-in review workflow
+
+  ---
+  My Recommendation
+
+  For a small team, I'd suggest a hybrid approach:
+
+  | Type                            | Where it lives                          | Format                         |
+  |---------------------------------|-----------------------------------------|--------------------------------|
+  | Quick ideas ("what if we...")   | Ideas project, task with backlog status | Title + 1-2 sentences          |
+  | Bigger ideas needing discussion | Markdown file in docs/ideas/            | Problem, approaches, questions |
+  | Shaped/approved work            | Real project with tasks                 | Full project structure         |
+  | Bugs                            | Bug Triage project                      | Task with priority             |
+
+  Monthly rhythm:
+  1. Capture — Add ideas anywhere, anytime (low friction)
+  2. Triage — Monthly 30-min review of Ideas project + docs/ideas/
+  3. Shape — Pick 1-2 promising ideas, write them up properly
+  4. Commit — Quarterly, promote shaped ideas to real projects
+
+  ---
+  What This Looks Like in Practice
+
+  Projects:
+  ├── [deliverable] Website Redesign      ← Committed work
+  ├── [deliverable] API v2                ← Committed work
+  ├── [grant] Q1 Foundation Report        ← Committed work
+  ├── [deliverable] Bug Triage            ← Ongoing maintenance
+  └── [deliverable] Ideas & Exploration   ← Idea parking lot
+
+  Ideas Project Tasks (all status=backlog, no assignee):
+  ├── [high] UK tax/benefit support
+  ├── [medium] Mobile app
+  ├── [medium] Dark mode
+  ├── [low] Slack integration
+  ├── [low] Public API for researchers
+  └── ... (dozens more, and that's fine)
+
+  docs/ideas/ (for bigger explorations):
+  ├── uk-support.md (detailed write-up)
+  └── api-v2-architecture.md (technical RFC)
+
+  Would you like me to sketch out what the CRM changes would look like to support this, or explore any of these approaches in more depth?
+
+> What I want to know is how you'd structure the following, assuming we 
+created new projects for bugs and ideas, and assuming that you can feel free
+ to create any new projects as you wish. Also note that we already have a 
+few projects, the ones assigned to Anthony Volk and/or Sakshi Kekre.
+
+## Other features and improvements
+
+* ~~Migrate to having `app.` subdomain for calculator~~
+* Bug fixes
+  * ~~Replace the Mantine favicon~~
+  * Unable to create a standalone household following refactor from flows to
+ pathways (\#463)
+  * Year '2025' not selectable in parameter value setter (\#401)
+  * Report output \- appears that for household-level reports, the 
+population isn’t properly displayed for some reason
+  * Report output \- when running a household report with just a single 
+current-law simulation, we display “No policy changes for this report” 
+(correct behavior) and an empty table header (incorrect behavior)
+* Congressional district map nits
+  * Outline of map
+  * Move away from using term “average” \- we really mean absolute
+  * Want to unify Overview and Comparative analysis
+  * Think about how to unify Overview, Comparative analysis, Congressional 
+districts (but what we have now is good for tomorrow)
+  * Make map loading lazy \- saves time, money
+  * Change default year to 2026
+  * When adding a param, enable use of Enter key to set param value
+  * Have param start dates start with 2026 by default (or inherit from tax 
+year setup)
+  * How user-friendly are Boolean param setters?
+  * Hex map \- may not be as important as API v2 stuff
+* Wind down GCP simulation API
+  * Clean up code in sim API, API v1 that supports old GCP structure
+* Outline improved dataset generation pipeline
+* Cost monitoring platform
+* Determine future of app v2
+* Blog posts
+  * Somehow migrate blog posts \- create a new report format and host them 
+as such? Link to v2 reports?
+* Dashboard page creation
+* Draft reports?
+* Report output pages bug fixes/minor improvements
+  * Ensure that in a report output, “Current law” properly displays, instead
+ of “Unknown policy” with the policy ID, and that current law values 
+populate in ingredient pages instead of just “-” \- open new issue
+  * Make the last-run date correct
+  * What is the “View All” next to the last-run date?
+  * Improve overview page \- lacking at the moment
+  * Fix Winners & Losers wealth decile chart \- flip lines horizontal
+  * When accessing parts of the chart menu very low down, you need to scroll
+ very far back and forth; uncomfortable
+  * “\< Reports” doesn’t work
+  * Report output panel sits weirdly in the browser and “\< Reports” takes 
+up a lot of space; reformat everything to fit better
+  * Policy tab either needs loading spinner or better way of getting policy 
+params
+  * Sometimes, policy tab displays “no policy changes,” even though there 
+definitely are?
+  * Why does population tab distinguish between baseline and reform for 
+economy-wide runs?
+  * Improve map color scheme and background to make sure that un-impacted 
+hexagons are always visible
+  * Titles of selected elements (e.g., “Policy Information”) should be 
+sentence case
+  * Claude visual skills
+  * Claude tool to check to make sure that PR is formatted correctly with 
+Fixes, etc.
+  * What is point of stack icon in the tab headers?
+  * Metadata loading \- replace the awkward period where stuff just doesn’t 
+load
+  * Visually improve the page that’s displayed when loading into the site 
+via external link
+* Report output pages new features
+  * ~~Make the re-run report button work, or remove it~~
+  * ~~Report setup \- Allow user to choose setup options, like dataset~~
+    * ~~Add economy parameters other than "region" to the \`params\` 
+structure from \`useEconomyCalculation\`~~
+  * Report output \- Add baseline and reform simulation result pages for 
+comparative household report outputs, including charts
+  * “Add this X (policy, etc.) to my profile/library/whatever” \- could be 
+enabled by API v2
+  * Download chart images in various formats
+  * Download map images in various formats
+  * Improve maps \- can we have geographic map using D3? Can we have 
+hexagons render better?
+  * Test AI description feature?
+* Ingredient page improvements
+  * Parameter change column of Policies page doesn't appear to be working 
+correctly (\#337)
+  * Implement pagination
+  * Allow clicking on a given ingredient to display more info about it \- 
+related to Anvar’s bug \#2 (When you go into the library of 
+Simulations/Policies/Reports on the left-hand side, and then try to select 
+one and click ‘Next’, you can’t)
+  * Ingredient editing
+  * Ingredient deletion
+  * Ingredient tagging?
+  * In the simulation setup, create a dropdown of some sort that shows 
+recent existing ingredients (\#330)
+* Param setter improvements
+  * In param setter, I can create a policy that is a duplicate of current 
+law (\#364)
+  * When expanding a param setter menu, if the now open menu extends below 
+the bottom of the screen, the menu should scroll upward a bit so all are 
+visible (\#355)
+  * Policy setup \- Param selector seems to imply that you can only set one 
+param; we should add something on footer to show how many params are 
+updated; may even be neat to be able to display a list of params modified; 
+“Next” should be renamed to something like “Finalize policy”
+  * Policy setup \- (If possible) Have confirmation page show full names of 
+selected parameters, not codes
+  * Param search
+  * Param reset
+  * Param infinity handling (requires API fixes)
+* Front-end polish
+  * Create consistent terminology around ingredient creation buttons (\#326)
+  * Switch to sentence case throughout the repo (\#312)
+  * Add validation for ingredient naming
+    * At the very least, make sure a name is provided?
+    * Disallow offensive terms, etc.?
+* Signed-in user experience
+  * Signed-in user experience: Creation of API v1 tables to enable user 
+ingredients
+  * Signed-in user experience: Integration of auth0 into website
+  * Signed-in user experience: Creation of logged-in user info/setup page 
+(section containing user email, etc.)
+  * User types
+  * Admin user experience?
+  * Max wants to keep signed-in and non-signed-in experience as similar as 
+possible \- associate user with ID via cookie, then prompt users to port 
+saved values into account later
+* Blog posts
+  * Implement batched loading and lazy loading for subsequent images
+* Implement methodologies page (\#317)
+* Properly hook into calculations every time site loads
+* Ensure multiple associations bug is fixed
+* Population setup improvements
+  * Determine how to improve geographic population selector
+  * Geographies shouldn’t be nameable and (potentially) shouldn’t be 
+“associable” to a given user \- this behavior is confusing, leads to bugs
+* Integration testing
+* Metadata improvements
+  * Metadata \- Create smoother interface for when metadata is loading (at 
+the moment, all that happens is components feel like they “lock out” users
+  * Metadata \- Lazy loader on all pages that aren’t calculator
+  * Refine country autoloading
+* “Suggested reports”
+  * Feature to push users toward suggested reports that we pre-create on 
+home/dashboard pages?
+* Bring over app v1 features
+  * All country pathways route to interactives \- need to restrict
+  * Build out remainder of home page
+  * Household cliff impacts
+  * Society-wide cliff impacts
+  * Report setup \- Allow multi-year simulation running
+  * Report setup \- Modify report schema in API to support datasets, etc.
+  * Static pages
+  * Reproduce in Python
+  * Add API T\&C to site
+  * Add footer to site
+* Integrate variable tracker flowchart app into app v2
+* User metrics
+  * User pathways, button clicks, dropout rate, etc.
+  * Accessibility measures?
+* RUM monitoring
+* Routing issues
+  * Country-specific interactives are currently incorrectly linked such that
+ any country ID can access them; this should be modified 
+
+⏺ This is a great exercise. Let me analyze this list and propose a structure.
+
+  ---
+  Proposed Project Structure
+
+  Special Projects (Ongoing)
+
+  | Project             | Purpose                                    |
+  |---------------------|--------------------------------------------|
+  | Bug Triage          | All bugs, triaged by priority              |
+  | Ideas & Exploration | Uncertain/exploratory items, no commitment |
+
+  Active/Planned Projects (Deliverables)
+
+  | Project                            | Scope                                         | Owner |
+  |------------------------------------|-----------------------------------------------|-------|
+  | Report Output Polish               | Bug fixes and UX improvements to report pages | TBD   |
+  | Report Output Features             | New capabilities for reports                  | TBD   |
+  | Ingredient Pages v2                | Pagination, editing, deletion, tagging        | TBD   |
+  | Param Setter UX                    | Search, reset, better confirmation flow       | TBD   |
+  | User Authentication                | Auth0, user profiles, signed-in experience    | TBD   |
+  | App v1 Feature Parity              | Household cliffs, static pages, footer, etc.  | TBD   |
+  | Congressional District Maps Polish | Map improvements, lazy loading, UX            | TBD   |
+  | Infrastructure Modernization       | GCP wind-down, cost monitoring, RUM           | TBD   |
+  | Front-end Standards                | Sentence case, terminology, validation        | TBD   |
+  | Blog Migration                     | Migrate posts to new format                   | TBD   |
+
+  ---
+  Detailed Breakdown
+
+  Bug Triage Project
+
+  P0 - Critical (blocks users)
+  (none identified in this list)
+
+  P1 - Important (significant UX issues)
+  - Unable to create standalone household (#463)
+  - Year '2025' not selectable in parameter value setter (#401)
+  - Report output - population not displayed for household-level reports
+  - Report output - empty table header when single current-law simulation
+  - "< Reports" doesn't work
+  - Policy tab sometimes shows "no policy changes" incorrectly
+
+  P2 - Normal (annoying but workable)
+  - Parameter change column not working correctly (#337)
+  - Winners & Losers wealth decile chart - flip lines horizontal
+  - Chart menu scroll issue (need to scroll far back and forth)
+  - Report panel layout sits weirdly, "< Reports" takes too much space
+  - "Current law" displays as "Unknown policy" with ID
+  - Current law values show "-" instead of actual values in ingredient pages
+  - Last-run date incorrect
+  - Map color scheme - un-impacted hexagons not visible
+  - Metadata loading - awkward period where stuff doesn't load
+  - Policy tab needs loading spinner
+  - Population tab baseline/reform distinction for economy-wide runs
+  - Duplicate of current law possible in param setter (#364)
+  - Param setter menu scroll issue (#355)
+  - Multiple associations bug
+  - Geographies shouldn't be nameable - confusing behavior
+  - Country pathways incorrectly allow any country ID
+
+  P3 - Low (cosmetic/edge cases)
+  - What is the "View All" next to last-run date?
+  - What is point of stack icon in tab headers?
+  - Titles should be sentence case (part of larger effort)
+  - Visually improve external link loading page
+
+  ---
+  Ideas & Exploration Project
+
+  Needs Discussion/Shaping
+  - Determine future of app v2 (strategic decision)
+  - Draft reports feature (what does this mean?)
+  - Dashboard page creation (what should it contain?)
+  - "Suggested reports" - push users toward pre-created reports
+  - Hex map for congressional districts (vs geographic map)
+  - User metrics strategy (pathways, clicks, dropout, accessibility)
+  - Variable tracker flowchart integration
+  - Improve geographic population selector (how?)
+
+  Maybe Someday
+  - Integrate D3 geographic maps (complex, unclear value)
+  - Admin user experience (what would admins do?)
+  - Claude visual skills for checking PRs (experimental)
+  - AI description feature for reports (test first)
+  - Reproduce in Python (why? for whom?)
+
+  ---
+  Report Output Polish (Project)
+
+  Bug fixes and UX improvements to existing report functionality
+
+  Tasks:
+  - Fix "Current law" display (shows "Unknown policy" with ID)
+  - Fix current law values in ingredient pages (shows "-")
+  - Fix last-run date accuracy
+  - Clarify "View All" button purpose (or remove)
+  - Improve overview page (currently lacking)
+  - Fix Winners & Losers chart orientation
+  - Fix chart menu scroll UX
+  - Reformat panel layout and "< Reports" spacing
+  - Add loading spinner to Policy tab
+  - Clarify Population tab baseline/reform for economy-wide
+  - Improve map color scheme for visibility
+  - Apply sentence case to titles
+  - Improve metadata loading state
+  - Improve external link loading page
+  - Remove or clarify stack icon in tab headers
+
+  ---
+  Report Output Features (Project)
+
+  New capabilities for report pages
+
+  Tasks:
+  - Add baseline/reform simulation pages for comparative household reports
+  - Add charts to household report outputs
+  - Download chart images (PNG, SVG, etc.)
+  - Download map images (PNG, SVG, etc.)
+  - Improve maps - D3 geographic option? Better hexagon rendering?
+  - "Add this policy to my library" button (depends on User Auth)
+  - Test AI description feature
+
+  ---
+  Ingredient Pages v2 (Project)
+
+  Overhaul of policies, simulations, reports ingredient pages
+
+  Tasks:
+  - Fix parameter change column (#337)
+  - Implement pagination
+  - Allow clicking ingredient for more info (fixes Anvar's bug #2)
+  - Add ingredient editing capability
+  - Add ingredient deletion capability
+  - Add ingredient tagging (optional?)
+  - Add recent ingredients dropdown in simulation setup (#330)
+  - Add validation for ingredient naming (at minimum, require name)
+  - Consider offensive term filtering
+
+  ---
+  Param Setter UX (Project)
+
+  Improvements to policy parameter selection flow
+
+  Tasks:
+  - Fix duplicate current law policy creation (#364)
+  - Fix menu scroll when expanding below screen (#355)
+  - Show count of modified params in footer
+  - Add list of modified params display
+  - Rename "Next" to "Finalize policy" or similar
+  - Show full param names on confirmation (not codes)
+  - Add param search
+  - Add param reset
+  - Handle infinity values (requires API fixes)
+  - Add Enter key to set param value
+  - Default param start dates to 2026 (or inherit from tax year)
+  - Evaluate Boolean param setter UX
+
+  ---
+  User Authentication (Project)
+
+  Signed-in user experience end-to-end
+
+  Tasks:
+  - Create API v1 tables for user ingredients
+  - Integrate Auth0 into website
+  - Create user info/setup page (email, etc.)
+  - Define user types
+  - Cookie-based association for non-signed-in users
+  - Prompt to port saved values when creating account
+  - (Later) Admin user experience
+
+  ---
+  App v1 Feature Parity (Project)
+
+  Features from app v1 not yet in v2
+
+  Tasks:
+  - Restrict country pathways to correct interactives
+  - Build out remainder of home page
+  - Household cliff impacts
+  - Society-wide cliff impacts
+  - Multi-year simulation running
+  - Modify report schema for datasets, etc.
+  - Static pages
+  - Add API T&C to site
+  - Add footer to site
+
+  ---
+  Congressional District Maps Polish (Project)
+
+  Improvements to the congressional district visualization
+
+  Tasks:
+  - Add outline to map
+  - Change terminology from "average" to "absolute" (or clarify)
+  - Unify Overview and Comparative analysis views
+  - Think through Overview/Comparative/Congressional unification
+  - Make map loading lazy (performance + cost)
+  - Change default year to 2026
+
+  ---
+  Infrastructure Modernization (Project)
+
+  DevOps, monitoring, and technical debt
+
+  Tasks:
+  - Wind down GCP simulation API
+  - Clean up sim API and API v1 GCP code
+  - Set up cost monitoring platform
+  - Set up RUM monitoring
+  - Outline improved dataset generation pipeline
+  - Properly hook into calculations on site load
+  - Integration testing setup
+  - Metadata lazy loading for non-calculator pages
+  - Refine country autoloading
+
+  ---
+  Front-end Standards (Project)
+
+  Consistency and polish across the app
+
+  Tasks:
+  - Switch to sentence case throughout repo (#312)
+  - Create consistent terminology for ingredient buttons (#326)
+  - Add validation for ingredient naming
+
+  ---
+  Blog Migration (Project)
+
+  Figure out blog post strategy for v2
+
+  Tasks:
+  - Determine migration approach (new report format? link to v2?)
+  - Implement batched/lazy loading for images
+
+  ---
+  Visual Summary
+
+  Bug Triage (ongoing)
+  ├── P1: 6 bugs
+  ├── P2: 16 bugs
+  └── P3: 4 bugs
+
+  Ideas & Exploration (ongoing)
+  ├── Needs shaping: 8 items
+  └── Maybe someday: 5 items
+
+  Active Projects
+  ├── Report Output Polish (15 tasks)
+  ├── Report Output Features (7 tasks)
+  ├── Ingredient Pages v2 (10 tasks)
+  ├── Param Setter UX (12 tasks)
+  ├── User Authentication (7 tasks)
+  ├── App v1 Feature Parity (9 tasks)
+  ├── Congressional District Maps Polish (6 tasks)
+  ├── Infrastructure Modernization (10 tasks)
+  ├── Front-end Standards (3 tasks)
+  └── Blog Migration (2 tasks)
+
+  ---
+  Questions for You
+
+  1. Existing projects — You mentioned Anthony and Sakshi have projects. What are they? I can merge relevant tasks into those.
+  2. Ownership — Do you want to assign owners now, or leave that for sprint planning?
+  3. Prioritization — Some of these projects are clearly more urgent (Report Output Polish, Bugs). Want me to suggest a sequencing?
+  4. Granularity — Some items like "Improve overview page" are vague. Should those stay as single tasks, or be broken down further once someone starts working on them?
+  5. Cross-cutting concerns — "Sentence case" touches many files. Should that be a dedicated project or a task that gets done opportunistically?
+
+> Toward question 1: I take it you have no access to the CRM tool database? 
+If you do, please fetch from there; if not, tell me 
+
+⏺ Correct — I don't have access to the CRM database. Looking at my available tools, I don't see an MCP connection to the CRM configured.
+
+  Options to get me that data:
+
+  1. Use the CLI (quickest):
+  cd /path/to/CRM/packages/cli
+  crm auth login
+  crm sync pull
+  1. Then I can read the YAML files from crm-data/projects/ and crm-data/tasks/
+  2. Configure the MCP server for this Claude Code session (more setup, but then I'd have live access)
+  3. Just tell me what projects currently exist for Anthony and Sakshi
+
+  Which would you prefer?
+
+
+
