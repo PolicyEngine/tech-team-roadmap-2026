@@ -26,6 +26,18 @@ export function TitleSlide() {
         A quarterly overview of priorities and initiatives
       </motion.p>
 
+      <motion.p
+        variants={childVariants}
+        style={{
+          margin: "0.5rem auto",
+          fontFamily: "var(--font-body)",
+          fontSize: "0.875rem",
+          color: "var(--pe-gray-400)",
+        }}
+      >
+        Last modified: January 16, 2026
+      </motion.p>
+
       <motion.div
         variants={childVariants}
         style={{

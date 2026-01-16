@@ -5,12 +5,13 @@ import { Navigation } from "./Navigation";
 import "./Slideshow.css";
 
 interface SlideshowProps {
-  children: React.ReactNode[];
+  children: React.ReactNode | React.ReactNode[];
 }
 
 export function Slideshow({ children }: SlideshowProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = children.length;
+  const childArray = Array.isArray(children) ? children : [children];
+  const totalSlides = childArray.length;
 
   const goToSlide = useCallback(
     (index: number) => {
@@ -55,7 +56,7 @@ export function Slideshow({ children }: SlideshowProps) {
     <div className="slideshow">
       <div className="slideshow__stage">
         <AnimatePresence mode="wait">
-          <Slide key={currentSlide}>{children[currentSlide]}</Slide>
+          <Slide key={currentSlide}>{childArray[currentSlide]}</Slide>
         </AnimatePresence>
       </div>
 

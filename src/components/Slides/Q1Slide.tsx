@@ -3,11 +3,11 @@ import { childVariants } from "../Slideshow/Slide";
 import { roadmapData, sortByStatus } from "../../data/roadmapData";
 import { DeliverableCard } from "../DeliverableCard";
 
-export function Q2Slide() {
-  const { q2 } = roadmapData;
+export function Q1Slide() {
+  const { q1 } = roadmapData;
 
   // Sort items by status, then split into two columns
-  const sortedItems = sortByStatus(q2.items);
+  const sortedItems = sortByStatus(q1.items);
   const midpoint = Math.ceil(sortedItems.length / 2);
   const leftColumn = sortedItems.slice(0, midpoint);
   const rightColumn = sortedItems.slice(midpoint);
@@ -15,7 +15,7 @@ export function Q2Slide() {
   return (
     <div className="slide__content">
       <motion.h1 className="slide-title" variants={childVariants}>
-        <span className="slide-title--accent">{q2.quarter}:</span> {q2.title}
+        <span className="slide-title--accent">{q1.quarter}:</span> {q1.title}
       </motion.h1>
 
       <motion.div
