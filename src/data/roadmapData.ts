@@ -61,7 +61,7 @@ export const roadmapData: {
         title: "Finish migrating app v2 onto API v2",
         status: "active",
         deadline: "Feb. 28, 2026",
-        description: "Commit to completing migration by Feb. 28",
+        description: "Commit to completing MVP by Feb. 28",
       },
       {
         title: "Create US congressional district-level breakdown map in app v2",
