@@ -1,4 +1,6 @@
-import { useNavigate } from "react-router-dom";
+'use client';
+
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import "./LandingPage.css";
 
@@ -23,7 +25,8 @@ const itemVariants = {
 };
 
 export function LandingPage() {
-  const navigate = useNavigate();
+  const router = useRouter();
+  const navigate = (path: string) => router.push(path);
 
   return (
     <div className="landing-page">

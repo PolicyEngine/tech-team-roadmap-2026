@@ -1,5 +1,7 @@
+'use client';
+
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 interface NavigationProps {
   currentSlide: number;
@@ -16,7 +18,8 @@ export function Navigation({
   onNext,
   onGoTo,
 }: NavigationProps) {
-  const navigate = useNavigate();
+  const router = useRouter();
+  const navigate = (path: string) => router.push(path);
 
   return (
     <nav className="slideshow__nav">

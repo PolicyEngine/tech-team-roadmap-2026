@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { childVariants } from "../Slideshow/Slide";
 import { roadmapData, sortByStatus } from "../../data/roadmapData";
