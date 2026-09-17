@@ -40,3 +40,7 @@ The presentation covers three quarters:
 - **Q1: Closing Loose Ends** - Completing migrations, process improvements, and addressing outstanding projects
 - **Q2: Ramping Up on the New Mission** - Market assessment, reusable components, and app v2 direction
 - **Q3+: Product Expansion** - New products, market-driven development, and improved analytics
+
+## License
+
+Code in this repository is released under the [MIT License](LICENSE). Original text and figures are released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) with attribution to PolicyEngine. Third-party data and materials keep their own terms.
